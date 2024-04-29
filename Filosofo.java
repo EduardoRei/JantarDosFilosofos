@@ -29,7 +29,7 @@ public class Filosofo extends Thread {
             e.printStackTrace();
         }
     }
-
+    
     @Override
     public void run() {
         while (true) {
@@ -37,9 +37,16 @@ public class Filosofo extends Thread {
                 // Pensar
                 pensar();
                 
-                // Pegar garfos
+                // Pegar garfo esquerdo
                 garfoEsquerdo.pegar();
-                garfoDireito.pegar();
+                
+                // Tentar pegar o garfo direito com timeout
+                try {
+                    garfoDireito.pegar();
+                } catch (InterruptedException e) {
+                    garfoEsquerdo.liberar(); // Libera o garfo esquerdo se houver timeout no direito
+                    continue; // Continua para o próximo ciclo do loop
+                }
                 
                 // Comer
                 comer();

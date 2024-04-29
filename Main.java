@@ -18,30 +18,12 @@ public class Main {
         Filosofo voltaire = new Filosofo("Voltaire", pratos[3],  garfos.get(3),  garfos.get(4));
         Filosofo descartes = new Filosofo("Descartes", pratos[4],  garfos.get(4), garfos.get(0));
 
-        //Prioridade
-        plato.setPriority(1);
-        confucius.setPriority(1);
-        socrates.setPriority(1);
-        voltaire.setPriority(1);
-        descartes.setPriority(1);
-
         //Start
         plato.start();
         confucius.start();
         socrates.start();
         voltaire.start();
         descartes.start();
-
-        //Join
-        try {
-            plato.join();
-            confucius.join();
-            socrates.join();
-            voltaire.join();
-            descartes.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
     }
 }
